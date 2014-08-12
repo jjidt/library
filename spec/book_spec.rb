@@ -27,4 +27,14 @@ describe 'Book' do
       expect(Vhs::Book.list.length).to eq 2
     end
   end
+
+  describe '.read' do
+    it 'searches the database for a book by title' do
+      test_book = Vhs::Book.new('title' => 'slaughterhouse 5')
+      test_book2 = Vhs::Book.new('title' => 'galapagos')
+      test_book_id = test_book.create
+      test_book2_id =test_book2.create
+      expect(Vhs::Book.read('title' => 'galapagos').first.id.to_i).to eq test_book2.id
+    end
+  end
 end
