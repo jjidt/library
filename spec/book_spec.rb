@@ -37,4 +37,15 @@ describe 'Book' do
       expect(Vhs::Book.read('title' => 'galapagos').first.id.to_i).to eq test_book2.id
     end
   end
+
+  describe '.update' do
+    it 'changes information in the database' do
+      test_book = Vhs::Book.new('title' => 'slaughterhouse 5')
+      test_book2 = Vhs::Book.new('title' => 'galapagos')
+      test_book_id = test_book.create
+      test_book2_id =test_book2.create
+      Vhs::Book.update({'title' => 'breakfast of champions'}, {'title' => 'slaughterhouse 5'})
+      expect(Vhs::Book.list[1].title).to eq 'breakfast of champions'
+    end
+  end
 end

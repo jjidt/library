@@ -42,7 +42,7 @@ module Vhs
       new_values = selectorize(attributes)
       DB.exec("UPDATE #{@@table}
       SET (#{columns}) = (#{new_values})
-      WHERE #{selector.keys[0]}= #{selector.values[0]};")
+      WHERE #{selector.keys[0]}= '#{selector.values[0]}';")
     end
 
     def self.delete(attributes)
