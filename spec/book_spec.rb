@@ -60,4 +60,17 @@ describe 'Book' do
       expect(Vhs::Book.list.first.title).to eq 'galapagos'
     end
   end
+
+  describe '.join_by_name' do
+    it 'will search for all of the book names for a given author' do
+      test_author_id = Vhs::Author.new('name' => 'Vonnegut').create
+      test_book_id = Vhs::Book.new('title' => 'Timequake').create
+      test_book2_id = Vhs::Book.new('title' => 'Player Piano').create
+      test_book3_id = Vhs::Book.new('title' => 'Bluebeard').create
+      Vhs::Authors_book.new('book_id' =>test_book_id, 'author_id' => test_author_id).create
+      Vhs::Authors_book.new('book_id' =>test_book2_id, 'author_id' => test_author_id).create
+      Vhs::Authors_book.new('book_id' =>test_book3_id, 'author_id' => test_author_id).create
+      expect(Vhs::Book.join_by_name('right_table' => 'authors', 'join_table' => 'authors_books', 'name' => 'Vonnegut').length).to eq 3
+    end
+  end
 end

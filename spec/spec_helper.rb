@@ -2,6 +2,7 @@ require 'rspec'
 require 'pg'
 require 'pry'
 require 'vhs'
+require 'authors_book'
 
 DB = PG.connect(:dbname => 'library_test')
 
@@ -12,6 +13,7 @@ RSpec.configure do |config|
     DB.exec("DELETE FROM checkouts *;")
     DB.exec("DELETE FROM copies *;")
     DB.exec("DELETE FROM patrons *;")
+    DB.exec("DELETE FROM authors_books")
   end
 end
 
