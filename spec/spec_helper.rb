@@ -1,8 +1,7 @@
 require 'rspec'
 require 'pg'
-require 'pry'
+# require 'pry'
 require 'vhs'
-require 'authors_book'
 
 DB = PG.connect(:dbname => 'library_test')
 

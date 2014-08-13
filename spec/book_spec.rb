@@ -67,6 +67,7 @@ describe 'Book' do
       test_book_id = Vhs::Book.new('title' => 'Timequake').create
       test_book2_id = Vhs::Book.new('title' => 'Player Piano').create
       test_book3_id = Vhs::Book.new('title' => 'Bluebeard').create
+      test_book4_id = Vhs::Book.new('title' => 'The Giving Tree')
       Vhs::Authors_book.new('book_id' =>test_book_id, 'author_id' => test_author_id).create
       Vhs::Authors_book.new('book_id' =>test_book2_id, 'author_id' => test_author_id).create
       Vhs::Authors_book.new('book_id' =>test_book3_id, 'author_id' => test_author_id).create
